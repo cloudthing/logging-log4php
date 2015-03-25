@@ -134,7 +134,11 @@ class LoggerAppenderMongoDB extends LoggerAppender {
 				$this->collection = $db->selectCollection($this->collectionName);
 			}
 			else{
-				$mongodbServerPath = "mongodb://" . $this->userName . ":" . $this->password . "@" . $this->host . ":" . $this->port . "/" . $this->databaseName;
+				if($this->userName && $this->userName){
+					$mongodbServerPath = "mongodb://" . $this->userName . ":" . $this->password . "@" . $this->host . ":" . $this->port . "/" . $this->databaseName;
+				}else{
+					$mongodbServerPath = "mongodb://" . $this->host . ":" . $this->port . "/" . $this->databaseName;
+				}
 				$this->connection = new MongoClient($mongodbServerPath);
 				$db	= $this->connection->selectDB($this->databaseName);
 				$this->collection = $db->selectCollection($this->collectionName);
