@@ -265,7 +265,7 @@ class LoggerLoggingEvent {
 	 * @return string
 	 */
 	public function getRenderedMessage() {
-		if($this->renderedMessage === null and $this->message !== null) {
+		if(/*$this->renderedMessage === null and*/ $this->message !== null) {
 			if(is_string($this->message)) {
 				$this->renderedMessage = $this->message;
 			} else {
